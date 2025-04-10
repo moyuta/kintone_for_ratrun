@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  console.log("hello! ratrun!");
+  console.log("Run copyTiProgress");
   kintone.events.on(
     [
       "app.record.edit.submit",
