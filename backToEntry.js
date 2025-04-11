@@ -2,7 +2,6 @@
 (function () {
   "use strict";
   console.log("Run backToEntry", new Date().toLocaleString());
-
   kintone.events.on(
     [
       "app.record.edit.submit",
@@ -21,7 +20,7 @@
           id: uniqueIdValue, // 更新対象のレコードID
           record: {
             schedule: {
-              value: "未実施",
+              value: "未調整",
             },
           },
         };
