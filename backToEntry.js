@@ -1,7 +1,7 @@
 // 進捗一覧の「日程調整」が「不参加」になった場合、求職者リストの「日程調整」を未調整に変更する
 (function () {
   "use strict";
-  console.log("Run backToEntry");
+  console.log("Run backToEntry", new Date().toLocaleString());
 
   kintone.events.on(
     [
