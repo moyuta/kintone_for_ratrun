@@ -1,3 +1,4 @@
+// 進捗一覧の「日程調整」が「不参加」になった場合、求職者リストの「日程調整」を未調整に変更する
 (function () {
   "use strict";
   console.log("Run backToEntry");
@@ -9,12 +10,13 @@
       "app.record.index.edit.submit.success",
     ],
     function (event) {
-      var record = event.record;
-      var scheduleValue = record["schedule"].value;
-      var relatedId = record["related_record_id"].value; // 求職者一覧のレコードID
+      console.log("Run event");
+      const record = event.record;
+      const recordId = event.record.recordId; // 求職者一覧のレコードID
+      const scheduleValue = record["schedule"].value;
 
       console.log("schedule:", scheduleValue);
-      console.log("related_record_id:", relatedId);
+      console.log(recordId);
       // セレクトを不参加にした時
       if (scheduleValue === "不参加" && relatedId) {
         var updateRecord = {
@@ -26,6 +28,7 @@
             },
           },
         };
+        console.log("修正したschedule:", scheduleValue);
 
         return kintone
           .api(kintone.api.url("/k/v1/record", true), "PUT", updateRecord)

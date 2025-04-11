@@ -1,6 +1,8 @@
+// 求職者一覧の日程調整が「調整済み」になった場合、進捗リストに追加をする
+
 (function () {
   "use strict";
-  console.log("Run copyTiProgress");
+  console.log("Run copyToProgress");
   kintone.events.on(
     [
       "app.record.edit.submit",
@@ -8,10 +10,10 @@
       "app.record.index.edit.submit.success",
     ],
     function (event) {
-      console.log("event 着火");
+      console.log("Run event");
       var record = event.record;
-      // ラジオボタンが "true" のとき
       console.log(record["schedule"].value);
+      // セレクターが "調整済み" のとき
       if (record["schedule"].value === "調整済み") {
         var postRecord = {
           app: 14, // 進捗一覧のアプリID = 14
