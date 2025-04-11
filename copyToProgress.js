@@ -11,8 +11,8 @@
     ],
     function (event) {
       console.log("Run event");
-      var record = event.record;
-      console.log(record["schedule"].value);
+      const record = event.record;
+      const recordId = event.record.recordId; // 求職者一覧のレコードID
       // セレクターが "調整済み" のとき
       if (record["schedule"].value === "調整済み") {
         var postRecord = {
@@ -26,6 +26,7 @@
             from_company: { value: record["from_company"].value },
             link: { value: record["link"].value },
             schedule: { value: record["schedule"].value },
+            unique_id: { value: recordId },
             // 必要なフィールドを追加
           },
         };

@@ -12,24 +12,21 @@
     function (event) {
       console.log("Run event");
       const record = event.record;
-      const recordId = event.record.recordId; // 求職者一覧のレコードID
       const scheduleValue = record["schedule"].value;
-
+      const uniqueIdValue = record["unique_id"].value;
       console.log("schedule:", scheduleValue);
-      console.log(recordId);
+      console.log(uniqueIdValue);
       // セレクトを不参加にした時
-      if (scheduleValue === "不参加" && relatedId) {
+      if (scheduleValue === "不参加" && recordId) {
         var updateRecord = {
           app: 11, // 求職者一覧アプリのID
-          id: relatedId, // 更新対象のレコードID
+          id: uniqueIdValue, // 更新対象のレコードID
           record: {
             schedule: {
               value: "未実施",
             },
           },
         };
-        console.log("修正したschedule:", scheduleValue);
-
         return kintone
           .api(kintone.api.url("/k/v1/record", true), "PUT", updateRecord)
           .then(function (resp) {
