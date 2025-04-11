@@ -13,8 +13,8 @@
       console.log("Run event");
       const record = event.record;
       const recordId = event.recordId; // 求職者一覧のレコードID
-      console.log(record[$id].value);
-      console.log(recordId);
+      console.log("record" + record[$id].value);
+      console.log("record" + recordId);
       // セレクターが "調整済み" のとき
       if (record["schedule"].value === "調整済み") {
         var postRecord = {
