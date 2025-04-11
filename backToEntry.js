@@ -14,10 +14,8 @@
       const record = event.record;
       const scheduleValue = record["schedule"].value;
       const uniqueIdValue = record["unique_id"].value;
-      console.log("schedule:", scheduleValue);
-      console.log(uniqueIdValue);
       // セレクトを不参加にした時
-      if (scheduleValue === "不参加" && recordId) {
+      if (scheduleValue === "不参加" && uniqueIdValue) {
         var updateRecord = {
           app: 11, // 求職者一覧アプリのID
           id: uniqueIdValue, // 更新対象のレコードID
